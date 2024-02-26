@@ -31,13 +31,4 @@ func handler(w http.ResponseWriter, r *http.Request) {
         // For this case, we will always pipe "Hello World" into the response writer
         fmt.Fprintf(w, " you have successfully deployed your image to the GKE cluster  ")
 }
-~                                                                                                                                                                                                                        
-~                                                                                                                                                                                                                        
-~                                                                                                                                                                                                                        
-~                                                                                                                                                                                                                        
-~                                                                                                                                                                                                                        
-~                                                                                                                                                                                                                        
-~                                                                                                                                                                                                                        
-~                                                                                                                                                                                                                        
-~                                                                                                                                                                                                                        
-                                                                                                                                                                                                       25,1          All
+                                                                                                                                   25,1          All
