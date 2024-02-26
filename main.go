@@ -1,36 +1,43 @@
-// Copyright 2020 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 
-// A very simple Go application.
+// This is the name of our package
+// Everything with this package name can see everything
+// else inside the same package, regardless of the file they are in
 package main
 
+// These are the libraries we are going to use
+// Both "fmt" and "net" are part of the Go standard library
 import (
-	"fmt"
-	"log"
-	"time"
+        // "fmt" has methods for formatted I/O operations (like printing to the console)
+        "fmt"
+        // The "net/http" library has methods to implement HTTP clients and servers
+        "net/http"
 )
 
-// Greet returns a pleasant greeting.
-func Greet(name string) string {
-	return fmt.Sprintf("Hello %s!", name)
+func main() {
+        // The "HandleFunc" method accepts a path and a function as arguments
+        // (Yes, we can pass functions as arguments, and even treat them like variables in Go)
+        // However, the handler function has to have the appropriate signature (as described by the "handler" function below)
+        http.HandleFunc("/", handler)
+
+        // After defining our server, we finally "listen and serve" on port 8080
+        // The second argument is the handler, which we will come to later on, but for now it is left as nil,
+        // and the handler defined above (in "HandleFunc") is used
+        http.ListenAndServe(":8080", nil)
 }
 
-func main() {
-	greeting := Greet("change-me")
-	log.Printf(greeting)
-	for {
-		// Don't exit, otherwise Kubernetes thinks we crashed.
-		time.Sleep(10 * time.Second)
-	}
+// "handler" is our handler function. It has to follow the function signature of a ResponseWriter and Request type
+// as the arguments.
+func handler(w http.ResponseWriter, r *http.Request) {
+        // For this case, we will always pipe "Hello World" into the response writer
+        fmt.Fprintf(w, " you have successfully deployed your image to the GKE cluster  ")
 }
+~                                                                                                                                                                                                                        
+~                                                                                                                                                                                                                        
+~                                                                                                                                                                                                                        
+~                                                                                                                                                                                                                        
+~                                                                                                                                                                                                                        
+~                                                                                                                                                                                                                        
+~                                                                                                                                                                                                                        
+~                                                                                                                                                                                                                        
+~                                                                                                                                                                                                                        
+                                                                                                                                                                                                       25,1          All
